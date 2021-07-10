@@ -1,12 +1,12 @@
 float r1 = 100; // length of first pendulum
 float r2 = 100; // length of second pendulum
-float m1 = 16; //  mass of first pendulum excluding weight of string
+float m1 = 20; //  mass of first pendulum excluding weight of string
 float m2 = 20; // mass of second pendulum excluding weight of string
 float a1 = PI/2; // angle formed by first pendulum and normal - angle1
 float a2 = PI/2; //angle formed by second pendulum and normal - angle2
 float a1_v = 0; //angular velocity of pendulum1
 float a2_v = 0; //angular velocity of pendulum2
-float g = 0.98; //gravitational constant (realistic value not considered for simplicity )
+float g = 1; //gravitational constant (realistic value not considered for simplicity )
 
 float px2 = -1; // previous position of second pendulum sphere - x offset
 float py2 = -1; // previos position of second pendulum sphere - y offset
@@ -15,7 +15,8 @@ float cx, cy; //centre of x and y for background
 PGraphics canvas; // canvas is just a variable name DO NOT CONFUSE IT WITH P5.JS
 
 void setup() {
-  size(1000, 600); 
+  frameRate(60);
+  fullScreen();
   cx = width/2;
   cy = height/2;
   canvas = createGraphics(width, height);
@@ -71,8 +72,8 @@ void draw() {
   
   // as momentum increases, slowly pendulum comes to rest
   // friction
-   a1_v *= 0.996; // for drag
-   a2_v *= 0.992; // for drag
+   a1_v *= 0.9998; // for drag
+   a2_v *= 0.9997; // for drag
 
   canvas.beginDraw();
   //canvas.background(0, 1);
