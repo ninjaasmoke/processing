@@ -12,7 +12,7 @@ void setup() {
 }
 
 void draw() {
-  background(0);
+  background(255);
   
     for (int y = 0; y < rows; y++) {
     beginShape(TRIANGLE_STRIP);

@@ -11,8 +11,8 @@ void setup() {
 }
 
 void draw() {
-  background(0);
-  stroke(255);
+  background(255);
+  stroke(20);
   noFill();
   
   translate(width/2, height/2);

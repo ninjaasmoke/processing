@@ -29,8 +29,8 @@ void draw() {
     yOff -=0.1;
   }
 
-  background(0);
-  stroke(200);
+  background(255);
+  stroke(20);
   noFill();
   
   translate(width/2, height/2+50);
