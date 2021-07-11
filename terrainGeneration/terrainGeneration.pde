@@ -25,15 +25,15 @@ void setup() {
   terrain = new float[cols][rows];
 }
 
-void do_movement(){
+void do_movement() {
   xD += (keys[0]?-1:0) + (keys[1]?1:0);
   yD += (keys[2]?-1:0) + (keys[3]?1:0);
 }
 
 void draw() {
-  
+
   do_movement(); // adds arrow controls to movement
-  
+
   float yOff = yD/10;
   for (int y = 0; y < rows; y++) {
     float xOff = xD/10;
@@ -48,9 +48,15 @@ void draw() {
   stroke(r-40, g-40, b-40);
   noFill();
 
+  textSize(12);
+  text("Y: "+(-yD), 20, 20); 
+  text("X: "+xD, 20, 40); 
+  fill(0, 102, 153);
+
   translate(width/2, height/2); // translate plane to center
   rotateX(PI/3); // rotate plane for viewer
   translate(-w/2, -h/2 + 100);
+
 
   for (int y = 0; y < rows-1; y++) {
     beginShape(TRIANGLE_STRIP);
@@ -70,17 +76,17 @@ void draw() {
   }
 }
 
-void keyPressed(){
+void keyPressed() {
   k(true);
 }
- 
-void keyReleased(){
+
+void keyReleased() {
   k(false);
 }
- 
-void k(boolean b){
-  for( int i = 0; i < key_lookup.length; i++){
-    if( keyCode == key_lookup[i] ){
+
+void k(boolean b) {
+  for ( int i = 0; i < key_lookup.length; i++) {
+    if ( keyCode == key_lookup[i] ) {
       keys[i] = b;
     }
   }
