@@ -81,10 +81,9 @@ which leads to
   	sin θ2 (m2 y2'' + m2 g) = −cos θ2 (m2 x2'')	(16)
 Next we need to use a computer algebra program to solve equations (13) and (16) for θ1'', θ2'' in terms of θ1, θ1', θ2, θ2' . Note that we also include the definitions given by equations (1-4), so that we have 2 equations (13, 16) and 2 unknowns ( θ1'', θ2'' ). The result is somewhat complicated, but is easy enough to program into the computer.
 
-θ1'' = 	−g (2 m1 + m2) sin θ1 − m2 g sin(θ1 − 2 θ2) − 2 sin(θ1 − θ2) m2 (θ2'2 L2 + θ1'2 L1 cos(θ1 − θ2))
-L1 (2 m1 + m2 − m2 cos(2 θ1 − 2 θ2))
-θ2'' = 	2 sin(θ1 − θ2) (θ1'2 L1 (m1 + m2) + g(m1 + m2) cos θ1 + θ2'2 L2 m2 cos(θ1 − θ2))
-L2 (2 m1 + m2 − m2 cos(2 θ1 − 2 θ2))
+    θ1'' = 	{−g (2 m1 + m2) sin θ1 − m2 g sin(θ1 − 2 θ2) − 2 sin(θ1 − θ2) m2 (θ2'2 L2 + θ1'2 L1 cos(θ1 − θ2))} /  L1 (2 m1 + m2 − m2 cos(2 θ1 − 2 θ2))
+    θ2'' = 	{2 sin(θ1 − θ2) (θ1'2 L1 (m1 + m2) + g(m1 + m2) cos θ1 + θ2'2 L2 m2 cos(θ1 − θ2))} / L2 (2 m1 + m2 − m2 cos(2 θ1 − 2 θ2))
+    
 These are the equations of motion for the double pendulum.
 
 Numerical Solution
