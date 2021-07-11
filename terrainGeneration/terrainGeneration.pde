@@ -4,10 +4,15 @@ int w = 2000;
 int h = 2000;
 
 float flying = 0;
+float xD = 0;
+float yD = 0;
 
 float[][] terrain;
 
 int r = 155, g = 118, b = 83;
+
+int[] key_lookup = { LEFT, RIGHT, UP, DOWN };
+boolean[] keys = { false, false, false, false };
 
 void setup() {
   frameRate(60);
@@ -16,35 +21,40 @@ void setup() {
   //size(width, height, P3D);
   cols = w / scl;
   rows = h /scl;
-  
+
   terrain = new float[cols][rows];
+}
+
+void do_movement(){
+  xD += (keys[0]?-1:0) + (keys[1]?1:0);
+  yD += (keys[2]?-1:0) + (keys[3]?1:0);
 }
 
 void draw() {
   
-  flying -= 0.04;
+  do_movement(); // adds arrow controls to movement
   
-  float yOff = flying;
-  for(int y = 0; y < rows; y++) {
-    float xOff = 0;
-    for(int x = 0; x < cols; x ++) {
-      terrain[x][y] = map(noise(xOff, yOff), 0, 1, -100, 100); // noise = perlin noise
+  float yOff = yD/10;
+  for (int y = 0; y < rows; y++) {
+    float xOff = xD/10;
+    for (int x = 0; x < cols; x ++) {
+      terrain[x][y] = map(noise(xOff, yOff), 0, 1, -150, 150); // noise = perlin noise
       xOff += 0.1;
     }
     yOff += 0.1;
   }
-  
+
   background(135, 206, 235);
-  stroke(r-30, g-30, b-30);
+  stroke(r-40, g-40, b-40);
   noFill();
-  
+
   translate(width/2, height/2); // translate plane to center
   rotateX(PI/3); // rotate plane for viewer
   translate(-w/2, -h/2 + 100);
-  
-  for(int y = 0; y < rows-1; y++) {
+
+  for (int y = 0; y < rows-1; y++) {
     beginShape(TRIANGLE_STRIP);
-    for(int x = 0; x < cols; x ++) {
+    for (int x = 0; x < cols; x ++) {
       // Create mesh of triangles
       //vertex(x*scl, y*scl);
       //vertex(x*scl, (y+1)*scl);
@@ -53,10 +63,25 @@ void draw() {
       // x & y vals are fixed
       // z vals need to be changed by some algo 
       vertex(x*scl, y*scl, terrain[x][y]);
-      fill(r,g,b);
+      fill(r, g, b);
       vertex(x*scl, (y+1)*scl, terrain[x][y+1]);
-      
     }
     endShape();
+  }
+}
+
+void keyPressed(){
+  k(true);
+}
+ 
+void keyReleased(){
+  k(false);
+}
+ 
+void k(boolean b){
+  for( int i = 0; i < key_lookup.length; i++){
+    if( keyCode == key_lookup[i] ){
+      keys[i] = b;
+    }
   }
 }
