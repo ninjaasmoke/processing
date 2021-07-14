@@ -17,7 +17,7 @@ void draw() {
     for (int y = 0; y < rows; y++) {
     beginShape(TRIANGLE_STRIP);
     for (int x = 0; x < cols; x ++) {
-      stroke(255);
+      stroke(0);
       noFill();
       vertex(x*scl, y*scl);
       vertex(x*scl, (y+1)*scl);
