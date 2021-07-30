@@ -15,6 +15,9 @@ int skyR = 35, skyG = 106, skyB = 135;
 int[] key_lookup = { LEFT, RIGHT, UP, DOWN };
 boolean[] keys = { false, false, false, false };
 
+float speed;
+
+
 void setup() {
   frameRate(60);
   //size(600, 600, P3D);
@@ -32,18 +35,13 @@ void do_movement() {
 }
 
 void draw() {
-  
-  pushMatrix();
-  fill(255);
-  ellipse(mouseX, mouseY, 100, 100);
-  popMatrix();
 
   do_movement(); // adds arrow controls to movement
   //yD -= 1; // comment for manual forward
   
   //yD *= 1.001; // auto acceleration
   
-  pointLight(100, 100, 150, mouseX, mouseY, 0);
+  pointLight(60, 60, 100, mouseX, mouseY, 0);
   
   spotLight(200, 200, 255, mouseX, mouseY, height * 0.9, 0, 0, -1, PI/6, 10);
 
